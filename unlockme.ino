@@ -3,24 +3,17 @@
   #include <ArduinoJson.h>
   #include <FirebaseClient.h>
   #include <WiFiClientSecure.h>
-  #define TINY_GSM_MODEM_SIM800  // Define modem model for TinyGSM
-  #include <TinyGsmClient.h>     // Include TinyGSM library
-  #include <HardwareSerial.h>    // Use HardwareSerial for ESP32
-  #include <Adafruit_Fingerprint.h> // Include Adafruit Fingerprint sensor library
+  #define TINY_GSM_MODEM_SIM800 
+  #include <TinyGsmClient.h>   
+  #include <HardwareSerial.h> 
+  #include <Adafruit_Fingerprint.h> 
 
   const char* ssidList[] = {
-      "SABELLE_09",
-      "miniwifi",
-      "PLDTHOMEFIBRYUZb4"
   };
 
   const char* passwordList[] = {
-      "s@l!b@y@_111",
-      "testuser",
-      "PLDTWIFI2Gk3W",
-
   };
-  // Monitor Serials
+
   #define SerialMon Serial
 
   // Relay pin for solenoid lock
@@ -42,13 +35,13 @@
   TinyGsm modem(SerialAT);
   Adafruit_Fingerprint finger = Adafruit_Fingerprint(&SerialFP);
 
-  const String deviceStatusUrl = "https://firestore.googleapis.com/v1/projects/unlockme-3a8ac/databases/(default)/documents/device/WuEC8rfVaZLOuSrp8p33?key=AIzaSyCVbUe_juNeMsEsYWV8D-Vh_JNhm48rXe8";
-  const String mobileNoUrl = "https://firestore.googleapis.com/v1/projects/unlockme-3a8ac/databases/(default)/documents/users?key=AIzaSyCVbUe_juNeMsEsYWV8D-Vh_JNhm48rXe8";
+  const String deviceStatusUrl = "";
+  const String mobileNoUrl = "";
   //Firebase Firestore materials
-  #define API_KEY "AIzaSyCVbUe_juNeMsEsYWV8D-Vh_JNhm48rXe8"  //api key from firebase
-  #define USER_EMAIL "adminonlymrs@gmail.com" //this is for authentication
-  #define USER_PASSWORD "adminonlymrs"
-  #define FIREBASE_PROJECT_ID "unlockme-3a8ac" //project ID 
+  #define API_KEY ""  //api key from firebase
+  #define USER_EMAIL "" //this is for authentication
+  #define USER_PASSWORD ""
+  #define FIREBASE_PROJECT_ID "" 
   void printResult(AsyncResult &aResult);
   DefaultNetwork network;
   UserAuth user_auth(API_KEY, USER_EMAIL, USER_PASSWORD);
@@ -60,7 +53,6 @@
   AsyncResult aResult_no_callback; 
 
   int counter = 0;
-  // int batteryStatus = 80;
   bool isLocked = true;
   bool isUpdatingLock = false; // New flag to track if we're in the process of locking/unlocking
   int fpAttempts = 0; //finger print attempts
